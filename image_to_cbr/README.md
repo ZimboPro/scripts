@@ -47,11 +47,11 @@ eg *1-20* when the folders contains the folders *1* to and including *20*
 >>>*1.jpg*  
 >>>*2.jpg*  
 >>>*...*  
->>*2*  
+>*2*  
 >>>*1.jpg*  
 >>>*2.jpg*  
 >>>*...*  
->>*...*  
+>*...*  
 
 ### Output
 
