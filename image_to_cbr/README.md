@@ -40,7 +40,8 @@ or
 It requires that the parent folder name containing subfolders with the images is the 
 lowest value folder name *-* the highest value folder name and the subfolders have the
 same requirements as the single folder option
-eg *1-20* when the folders contains the folders *1* to and including *20* ans th
+eg *1-20* when the folders contains the folders *1* to and including *20*
+
 *1-20*
     *-1*
         *-1.jpg*
