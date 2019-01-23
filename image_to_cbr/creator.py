@@ -3,6 +3,7 @@
 from zipfile import ZipFile
 import os
 import sys
+import getopt
 
 def get_all_file_paths(directory): 
   
@@ -42,6 +43,8 @@ def zip_file(files, name):
             zip.write(file)
 
 def get_filename_and_path(directory):
+    if not directory.endswith('/'):
+        directory = directory + "/"
     a = directory.split('/')
     temp = a[len(a) - 2].zfill(3) + ".cbr"
     t = os.path.dirname(os.path.dirname(directory)) + "/"
@@ -53,7 +56,7 @@ def current_folder(directory):
     if len(files) > 0:
         file = get_filename_and_path(directory)
         zip_file(files, file)
-        print("zipped folder " + directory)
+        print("Zipped file " + file)
 
 def subfolders(directory):
     a = directory.split('/')
@@ -72,17 +75,22 @@ def subfolders(directory):
         current_folder(temp)
         i += 1
 
+opts, args = getopt.getopt(sys.argv[1:], 'm:s:', ['multiple=', 'single='])
 
-def main(args): 
+def main(argv): 
     # path to folder which needs to be zipped 
-    if len(args) == 2:
-        directory = str(args[1])
-        subfolders(directory)
-    else:
+    if len(argv) > 2:
+        for opt, arg in opts:
+            if opt in ('-m', '--multiple'):
+                # print(arg)
+                subfolders(arg)
+                print('Multiple folders zipped successfully!')            
+            elif opt in ('-s', '--single'):
+                current_folder(arg)
+                # print(arg)
+                print('Single folder zipped successfully!')
+    else:         
         print('no args given')
-  
-    print('All files zipped successfully!')         
-  
-  
+
 if __name__ == "__main__": 
     main(sys.argv) 
