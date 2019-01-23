@@ -27,9 +27,9 @@ It requires that the folder name containing the images is a number and that the
 images are numbers as well.
 
 *-1* 
-...*-1.jpg*  
-...*-2.jpg*  
-...*...*  
+ ...*-1.jpg*  
+ ...*-2.jpg*  
+ ...*...*  
 
 ### Multiple folder option
 
