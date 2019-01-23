@@ -26,10 +26,10 @@ or
 It requires that the folder name containing the images is a number and that the 
 images are numbers as well.
 
-*-1*
-    *-1.jpg*
-    *-2.jpg*
-    *...*
+*-1* 
+    *-1.jpg* 
+    *-2.jpg* 
+    *...* 
 
 ### Multiple folder option
 
@@ -42,16 +42,16 @@ lowest value folder name *-* the highest value folder name and the subfolders ha
 same requirements as the single folder option
 eg *1-20* when the folders contains the folders *1* to and including *20*
 
-*1-20*
-    *-1*
-        *-1.jpg*
-        *-2.jpg*
-        *...*
-    *-2*
-        *-1.jpg*
-        *-2.jpg*
-        *...*
-    *...*
+*1-20* 
+    *-1* 
+        *-1.jpg* 
+        *-2.jpg* 
+        *...* 
+    *-2* 
+        *-1.jpg* 
+        *-2.jpg* 
+        *...* 
+    *...* 
 
 ### Output
 
