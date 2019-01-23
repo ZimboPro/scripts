@@ -75,7 +75,16 @@ def subfolders(directory):
         current_folder(temp)
         i += 1
 
-opts, args = getopt.getopt(sys.argv[1:], 'm:s:', ['multiple=', 'single='])
+def usage():
+    print('python3 creator.py -s folder // python3 creator --single folder')
+    print('OR')
+    print('python3 creator.py -m folder // python3 creator --multiple folder')
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], 'm:s:', ['multiple=', 'single='])
+except getopt.GetoptError:
+    usage()
+    sys.exit(2)
 
 def main(argv): 
     # path to folder which needs to be zipped 
