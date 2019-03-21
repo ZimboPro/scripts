@@ -36,7 +36,7 @@ def getFiles():
 
 def removeString():
     global removeStr
-    files = getFiles();
+    files = getFiles()
     for f in files:
         if removeStr in f:
             newName = f.replace(removeStr, "", 1)
@@ -45,7 +45,7 @@ def removeString():
 def replaceString():
     global replaceStr
     global removeStr
-    files = getFiles();
+    files = getFiles()
     for f in files:
         if removeStr in f:
             newName = f.replace(removeStr, replaceStr, 1)
