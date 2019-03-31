@@ -26,5 +26,8 @@ or
 test > toot
 testTest > tootTest
 
+### Recursive option
+By adding `-R` or `--recursive` to any of the other options will allow the script to search all sub-directories
+
 ## NOTE
 This script requires python3

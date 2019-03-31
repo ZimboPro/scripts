@@ -4,7 +4,7 @@ import sys
 import getopt
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], 'd:r:', ['delete=', 'replace='])
+    opts, args = getopt.getopt(sys.argv[1:], 'd:r:R', ['delete=', 'replace=', 'recursive'])
 except getopt.GetoptError:
     usage()
     sys.exit(2)
@@ -12,6 +12,7 @@ except getopt.GetoptError:
 removeStr = ""
 replaceStr = ""
 flags = 0
+recursive = False;
 
 def usage():
     print("python3 rename_files.py -d \"string\" // python3 rename_files.py --delete \"string\"")
@@ -25,37 +26,76 @@ def setReplace(arg):
     flags = flags + 2
     replaceStr = arg
 
+def getDirs(path):
+    root, dirs, files = os.walk(path);
+    folders = []
+    for folder in dirs:
+        folders.append(os.path.join(root, folder))
+    return folders;
+
 def setRemove(arg):
     global removeStr
     global flags
+    global recursive
     flags = flags + 1
     removeStr = arg
 
-def getFiles():
-    return os.listdir(os.curdir)
+def getFiles(path):
+    return os.listdir(path)
 
-def removeString():
+def removeStringDir(path):
     global removeStr
-    files = getFiles()
+    files = getFiles(path)
     for f in files:
         if removeStr in f:
             newName = f.replace(removeStr, "", 1)
+            f = os.path.join(path, f)
+            newName = os.path.join(path, newName)
             os.rename(f, newName)
 
-def replaceString():
+def removeString(path):
+    global removeStr
+    global recursive
+    if recursive:
+        removeStringDir(path)
+        files = getFiles(path)
+        for file in files:
+            newPath = os.path.join(path, file)
+            if os.path.isdir(newPath):
+                removeString(newPath)
+    else:
+        removeStringDir(path)
+
+def replaceStringDir(path):
     global replaceStr
     global removeStr
-    files = getFiles()
+    files = getFiles(path)
     for f in files:
         if removeStr in f:
             newName = f.replace(removeStr, replaceStr, 1)
+            f = os.path.join(path, f)
+            newName = os.path.join(path, newName)
             os.rename(f, newName)
+
+def replaceString(path):
+    global replaceStr
+    global removeStr
+    global recursive
+    if recursive:
+        replaceStringDir(path)
+        files = getFiles(path);
+        for file in files:
+            newPath = os.path.join(path, file)
+            if os.path.isdir(file):
+                replaceString(newPath)
+    else:
+        replaceStringDir(path)
 
 def executeFlags():
     if flags == 1:
-        removeString()
+        removeString(os.curdir)
     elif flags == 3:
-        replaceString()
+        replaceString(os.curdir)
     elif flags == 2:
         print("The --replace/-r flag needs to be used in junction with the --delete/-d flag")
     else:
@@ -70,6 +110,9 @@ def main(argv):
                 setRemove(arg)         
             elif opt in ('-r', '--replace'):
                 setReplace(arg)
+            elif opt in ('-R', '--recursive'):
+                global recursive
+                recursive = True
         executeFlags()
     else:         
         usage()
