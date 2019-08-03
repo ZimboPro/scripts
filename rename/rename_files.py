@@ -45,10 +45,11 @@ def getFiles(path):
 
 def removeStringDir(path):
     global removeStr
+    global replaceStr
     files = getFiles(path)
     for f in files:
         if removeStr in f:
-            newName = f.replace(removeStr, "", 1)
+            newName = f.replace(removeStr, replaceStr, 1)
             f = os.path.join(path, f)
             newName = os.path.join(path, newName)
             os.rename(f, newName)
@@ -66,36 +67,11 @@ def removeString(path):
     else:
         removeStringDir(path)
 
-def replaceStringDir(path):
-    global replaceStr
-    global removeStr
-    files = getFiles(path)
-    for f in files:
-        if removeStr in f:
-            newName = f.replace(removeStr, replaceStr, 1)
-            f = os.path.join(path, f)
-            newName = os.path.join(path, newName)
-            os.rename(f, newName)
-
-def replaceString(path):
-    global replaceStr
-    global removeStr
-    global recursive
-    if recursive:
-        replaceStringDir(path)
-        files = getFiles(path);
-        for file in files:
-            newPath = os.path.join(path, file)
-            if os.path.isdir(file):
-                replaceString(newPath)
-    else:
-        replaceStringDir(path)
-
 def executeFlags():
     if flags == 1:
         removeString(os.curdir)
     elif flags == 3:
-        replaceString(os.curdir)
+        removeString(os.curdir)
     elif flags == 2:
         print("The --replace/-r flag needs to be used in junction with the --delete/-d flag")
     else:
