@@ -6,6 +6,7 @@ sudo apt-get update -y
 sudo apt install -y vim
 sudo apt install -y htop
 sudo apt install -y curl wget
+sudo apt install -y arp-scan nmap
 
 # git
 sudo apt install -y git
@@ -21,6 +22,7 @@ sudo rm -f microsoft.gpg
 # python 3
 sudo add-apt-repository ppa:deadsnakes/ppa -y )
 sudo apt install -y python3
+
 # chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
