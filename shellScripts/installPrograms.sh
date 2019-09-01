@@ -8,21 +8,6 @@ sudo apt install -y htop
 sudo apt install -y curl wget
 sudo apt install -y arp-scan nmap
 
-# git
-sudo apt install -y git
-
-# vs code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update -y
-sudo apt install -y code
-sudo rm -f microsoft.gpg
-
-# python 3
-sudo add-apt-repository ppa:deadsnakes/ppa -y )
-sudo apt install -y python3
-
 # chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -34,6 +19,14 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt update -y
 sudo apt install -y sublime-text
+
+# TLP - saves battery when Ubuntu is installed on Laptops
+sudo apt-get remove laptop-mode-tools
+sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install -y tlp tlp-rdw smartmontools ethtool
+sudo tlp start
+sudo tlp stat
 
 # Archive Extractors
 sudo apt-get install -y unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller
