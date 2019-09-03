@@ -13,11 +13,9 @@ sudo apt install -y htop
 sudo apt install -y curl wget
 sudo apt install -y arp-scan nmap
 
-# chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt --fix-broken install -y
-rm -f google-chrome-stable_current_amd64.deb
+# chromium
+sudo apt-get update -y
+sudo apt-get install chromium chromium-l10n
 
 # sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -

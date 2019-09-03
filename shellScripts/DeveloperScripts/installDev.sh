@@ -29,15 +29,17 @@ fi
 sudo apt install -y build-essentials file
 
 # vs code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get install -y apt-transport-https
 sudo apt update -y
 sudo apt install -y code
 sudo rm -f microsoft.gpg
 
 # python 3
-sudo add-apt-repository ppa:deadsnakes/ppa -y )
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt-get update -y
 sudo apt install -y python3
 
 # golang
