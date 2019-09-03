@@ -75,3 +75,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 # valgrind and cmake
 brew install cmake
 brew install valgrind
+
+# rust
+curl -sf -L https://static.rust-lang.org/rustup.sh | sh
