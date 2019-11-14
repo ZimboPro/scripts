@@ -12,7 +12,7 @@ except getopt.GetoptError:
 removeStr = ""
 replaceStr = ""
 flags = 0
-recursive = False;
+recursive = False
 
 def usage():
     print("python3 rename_files.py -d \"string\" // python3 rename_files.py --delete \"string\"")
@@ -27,11 +27,11 @@ def setReplace(arg):
     replaceStr = arg
 
 def getDirs(path):
-    root, dirs, files = os.walk(path);
+    root, dirs, files = os.walk(path)
     folders = []
     for folder in dirs:
         folders.append(os.path.join(root, folder))
-    return folders;
+    return folders
 
 def setRemove(arg):
     global removeStr
