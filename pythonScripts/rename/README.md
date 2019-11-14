@@ -1,4 +1,4 @@
-# Renaming files and/or folders bying deleting parts of the name or replace a part of the name
+# Renaming files and/or folders by deleting parts of the name or replace a part of the name
 
 ## How it works
 

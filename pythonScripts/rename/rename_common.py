@@ -7,6 +7,7 @@ def get_files_in_dir(dir: str):
 
 def get_folders_in_dir(dir: str):
     root, dirs, files = os.walk(dir)
+    files = files
     folders = []
     for folder in dirs:
         folders.append(os.path.join(root, folder))
