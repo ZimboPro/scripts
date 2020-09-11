@@ -39,9 +39,13 @@ class LoanCalculator:
 
               column=1, sticky=W)
 
-        Label(self.window, text="Total Payment").grid(row=5,
+        Label(self.window, text="Total Payment W/O Additional").grid(row=5,
 
               column=1, sticky=W)
+
+        Label(self.window, text="Total Payment w Additional").grid(row=5,
+
+              column=3, sticky=W)
 
         Label(self.window, text="Additional Payment").grid(row=6,
 
@@ -119,6 +123,12 @@ class LoanCalculator:
         lblTotalPayment = Label(self.window, textvariable = self.totalPaymentVar).grid(
 
                           row=5, column=2, sticky=E)
+
+        self.totalPaymentWithVar = StringVar()
+
+        lblTotalPaymentWith = Label(self.window, textvariable = self.totalPaymentWithVar).grid(
+
+                          row=5, column=4, sticky=E)
         self.totalYears = StringVar()
 
         lblTotalYears = Label(self.window, textvariable = self.totalYears).grid(
@@ -249,7 +259,7 @@ class LoanCalculator:
 
         totalPayment = float(self.monthlyPaymentVar.get()) * 12 * int(self.numberOfYearsVar.get())
 
-        self.totalPaymentVar.set(format(totalPayment, "10.2f"))      #Set total payment
+        self.totalPaymentVar.set('{:,.2f}'.format(totalPayment).replace(',', ' '))      #Set total payment
 
         times = int(self.reInvestTimes.get())
 
@@ -268,6 +278,9 @@ class LoanCalculator:
 
                               time + 1)
 
+        totalPaymentWith = self.totalMonths * (float(self.additionalPayment.get()) + monthlyPayment)
+
+        self.totalPaymentWithVar.set('{:,.2f}'.format(totalPaymentWith).replace(',', ' '))      #Set total payment with additional payment
 
 
     def getMonthlyPayment(self, loanAmount, monthlyInterestRate, numberOfYears):   #Get monthly payment
