@@ -6,4 +6,4 @@ to be set.
 
 ## Note
 This script was created on Debain so I am not sure if it will work on a BSD or Mac. Windows was not
-considered during development.    
+considered during development.

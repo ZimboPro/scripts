@@ -67,7 +67,7 @@ sudo pip install docker-compose
 sudo apt install -y build-essentials clang gcc gdb glibc
 
 # c++
-sudo apt install -y clang++ g++ 
+sudo apt install -y clang++ g++
 
 # homebrew
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"

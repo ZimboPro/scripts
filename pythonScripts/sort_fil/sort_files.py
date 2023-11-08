@@ -18,19 +18,19 @@ except getopt.GetoptError:
 
 def sort_by_name(arg):
     print(arg)
-    for root, directories, files in os.walk(arg): 
+    for root, directories, files in os.walk(arg):
         # print(directories)
         if (root == arg):
             for filename in files:
                 print(filename)
 
-            
+
 
 def sort_by_file_type(arg):
     print(arg)
     sorted_files = []
     file_types = []
-    for root, directories, files in os.walk(arg): 
+    for root, directories, files in os.walk(arg):
         if (root == arg):
             for filename in files:
                 temp = os.path.splitext(filename)[1].lower()
@@ -44,13 +44,13 @@ def main(argv):
             if opt in ('-n', '--name'):
                 # print(arg)
                 sort_by_name(arg)
-                print('Multiple folders zipped successfully!')            
+                print('Multiple folders zipped successfully!')
             elif opt in ('-t', '--type'):
                 sort_by_file_type(arg)
                 # print(arg)
                 print('Single folder zipped successfully!')
-    else:         
+    else:
         print('no args given')
 
-if __name__ == "__main__": 
-    main(sys.argv) 
+if __name__ == "__main__":
+    main(sys.argv)
